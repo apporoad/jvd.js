@@ -1,0 +1,2 @@
+var JVD = requie('./index')
+

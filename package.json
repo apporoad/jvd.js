@@ -1,0 +1,23 @@
+{
+  "name": "jvd.js",
+  "version": "1.0.0",
+  "description": "js validator",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apporoad/jvd.js.git"
+  },
+  "keywords": [
+    "validator"
+  ],
+  "author": "apporoad",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/apporoad/jvd.js/issues"
+  },
+  "homepage": "https://github.com/apporoad/jvd.js#readme"
+}
