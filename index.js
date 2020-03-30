@@ -2,9 +2,9 @@ const utils = require('lisa.utils')
 
 function JVD(initData){
     _this = this
-    _this._implements = {}
-    _this._params = {}
-    _this.reg = (itemName, implement)=>{
+    this._implements = {}
+    this._params = {}
+    this.reg = (itemName, implement)=>{
         if(itemName && (utils.Type.isFunction(implement) || utils.Type.isAsyncFunction(implement))){
             switch(itemName){
                 case 'test':
@@ -15,7 +15,7 @@ function JVD(initData){
                     console.log('JVD key string cannot be reged : ' + itemName)
                     return
                 default: 
-                    _this[itemName] = (...params)=>{
+                    this[itemName] = (...params)=>{
                         _this._params[itemName] = params
                         return _this
                     }
@@ -24,37 +24,37 @@ function JVD(initData){
             }
         }
     }
-    _this.add =  _this.reg
+    this.add =  this.reg
 
-    _this.test = _this.run = _this.go = ()=>{}
+    this.test = this.run = this.go = ()=>{}
 
-    _this.isString = ()=>{
+    this.isString = ()=>{
      
-        return _this
+        return this
     }
 
-    _this.isNumber = ()=>{
-        return _this
+    this.isNumber = ()=>{
+        return this
     }
-    _this.isInteger =()=>{}
+    this.isInteger =()=>{}
 
-    _this.isFunction = ()=>{}
-    _this.isJson = ()=>{}
-    _this.isArray = ()=>{}
-    _this.isRegExp = ()=>{}
-    _this.required = ()=>{}
-    _this.nullable = ()=>{}
-    _this.not = ()=>{}
-    _this.or = ()=>{}
-    _this.anything = ()=>{}
-    _this.pattern = _this.match= ()=>{}
-    _this.greaterThan=()=>{}
-    _this.litterThan = ()=>{}
-    _this.between = _this.range = ()=>{}
-    _this.oneOf = _this.in= ()=>{}
-    _this.equils = _this.toBe = _this.is = ()=>{}
+    this.isFunction = ()=>{}
+    this.isJson = ()=>{}
+    this.isArray = ()=>{}
+    this.isRegExp = ()=>{}
+    this.required = ()=>{}
+    this.nullable = ()=>{}
+    this.not = ()=>{}
+    this.or = ()=>{}
+    this.anything = ()=>{}
+    this.pattern = this.match= ()=>{}
+    this.greaterThan=()=>{}
+    this.litterThan = ()=>{}
+    this.between = this.range = ()=>{}
+    this.oneOf = this.in= ()=>{}
+    this.equils = this.toBe = this.is = ()=>{}
 
-    return _this
+    return this
 }
 
 
