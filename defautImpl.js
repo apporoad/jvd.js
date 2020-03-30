@@ -22,50 +22,50 @@ function isInteger(val){
 
 exports.isString = (data)=>{
     if(data == null || data == undefined)
-        return true
+        return null
     return utils.Type.isString(data)
 }
 
 exports.isNumber = (data)=>{
     if(data==null || data == undefined)
-        return true
+        return null
     return isNumber(data)
 }
 
 exports.isInteger =(data)=>{
     if(data == null || data== undefined)
-        return true
+        return null
     return isInteger(data)
 }
 
 exports.isFunction = (data)=>{
     if(data == null || data == undefined)
-        return true
+        return null
     return utils.Type.isFunction(data) || utils.Type.isAsyncFunction(data)
 }
 exports.isSyncFunction = (data)=>{
     if(data == null || data == undefined)
-        return true
+        return null
     return utils.Type.isFunction(data) 
 }
 exports.isAsyncFunction = (data)=>{
     if(data == null || data == undefined)
-        return true
+        return null
     return utils.Type.isAsyncFunction(data)
 }
 exports.isJSON = (data)=>{
     if(data == null || data == undefined)
-        return true
+        return null
     return utils.Type.isObject(data)
 }
 exports.isArray = (data)=>{
     if(data == null || data == undefined)
-        return true
+        return null
     return utils.Type.isArray(data)
 }
 exports.isRegExp = (data)=>{
     if(data == null || data == undefined)
-        return true
+        return null
     return utils.Type.isRegExp(data)
 }
 exports.required = (data)=>{
@@ -75,10 +75,61 @@ exports.required = (data)=>{
 }
 exports.anything = exports.required
 
+exports.pattern = exports.match  = (data, regExp)=>{
+    if(data ==null || data == undefined){
+        return null
+    }
+    if(regExp && utils.Type.isRegExp(regExp)){
+        return regExp.test(data)
+    }
+    throw Error('not right regExp' + regExp)
+}
 
-    this.pattern = this.match= ()=>{}
-    this.greaterThan=()=>{}
-    this.litterThan = ()=>{}
-    this.between = this.range = ()=>{}
-    this.oneOf = this.in= ()=>{}
-    this.equils = this.toBe = this.is = ()=>{}
+exports.gt = exports.greaterThan = (data, value )=>{
+     if(data ==null || data == undefined){
+        return null
+    }
+    if(value){
+        return data > value
+    }
+    return false
+}
+exports.lt = exports.litterThan =(data,value)=>{
+     if(data ==null || data == undefined){
+        return null
+    }
+    if(value){
+        return data < value
+    }
+    return false
+}
+
+exports.between = exports.range = (data, low,high)=>{
+     if(data ==null || data == undefined){
+        return null
+    }
+    if(low && high){
+        return data > low && data < high
+    }
+    return false
+}
+
+exports.oneOf = exports.in = (data, array)=>{
+      if(data ==null || data == undefined){
+        return null
+    }
+    if(array && utils.Type.isArray(array)){
+        return utils.ArrayContains(data)
+    }
+    return false
+}
+
+exports.equils = exports.toBe = exports.is =(data,value)=>{
+      if(data ==null || data == undefined){
+        return null
+    }
+    if(value){
+        return data == value
+    }
+    return false
+}

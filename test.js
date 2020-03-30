@@ -1,12 +1,12 @@
 var JVD = require('./index')
 
 
-it('test reg',()=>{
+it('test reg', () => {
 
     var jvd = JVD()
     var jvd2 = JVD()
-    jvd.reg('isTest', data=>{
-        if(data && data.isTest)
+    jvd.reg('isTest', data => {
+        if (data && data.isTest)
             return true
         return false
     })
@@ -15,11 +15,14 @@ it('test reg',()=>{
 })
 
 
-var a = require('./defautImpl')
+it('real test', () => {
 
-console.log(a)
+    // test not   and all
+    expect(JVD().isString().gt(23).lt(13).run(null)).toBe(true)
+    expect( JVD().isNumber().gt(10).lt(80).run(81)).toBe(false)
+    expect(JVD().isNumber().not().lt(10).not().gt(100).run(110)).toBe(false)
+    expect(JVD().isNumber().lt(10).or().gt(100).test(9)).toBe(true)
 
-var b= {
-    aa : JVD().requiered().isNumber().gt(100).lt(200),
-    "bb" : JVD().isString().match(/aabb/g)
-}
+    // todo test
+
+})

@@ -2,8 +2,20 @@
 /**类声明*/
 declare class JVD{
 
+
+    /**
+     *   is  instance of  string
+     *  是否是字符串
+     */
      isString() : JVD
+
+     /**
+      *  is instance  of number
+      *  是否是数字
+      */
     isNumber():JVD
+
+    
 }
 
 declare function JVD(s:string): JVD
