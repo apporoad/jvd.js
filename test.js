@@ -1,5 +1,4 @@
 var JVD = require('./index')
-var translator = require('./simpleTranslator')
 
 it('test reg', () => {
 
