@@ -85,50 +85,64 @@ exports.pattern = exports.match  = (data, regExp)=>{
     throw Error('not right regExp' + regExp)
 }
 
-exports.gt = exports.greaterThan = (data, value )=>{
+exports.gt = exports.greaterThan = (data, value,comparedFn)=>{
      if(data ==null || data == undefined){
         return null
     }
     if(value){
+        if(comparedFn){
+            return comparedFn(data,value)
+        }
         return data > value
     }
     return false
 }
-exports.lt = exports.litterThan =(data,value)=>{
+exports.lt = exports.litterThan =(data,value,comparedFn)=>{
      if(data ==null || data == undefined){
         return null
     }
     if(value){
+        if(comparedFn){
+            return !comparedFn(data,value)
+        }
         return data < value
     }
     return false
 }
 
-exports.between = exports.range = (data, low,high)=>{
+exports.between = exports.range = (data,low,high,comparedFn)=>{
      if(data ==null || data == undefined){
         return null
     }
     if(low && high){
-        return data > low && data < high
+        if(comparedFn){
+            return comparedFn(data,low) && comparedFn(high,data)
+        }
+        return data >= low && data <= high
     }
     return false
 }
 
-exports.oneOf = exports.in = (data, array)=>{
+exports.oneOf = exports.in = (data, array,comparedFn)=>{
       if(data ==null || data == undefined){
         return null
     }
     if(array && utils.Type.isArray(array)){
-        return utils.ArrayContains(data)
+        if(comparedFn){
+            utils.ArrayContains(array,data,comparedFn)
+        }
+        return utils.ArrayContains(array,data)
     }
     return false
 }
 
-exports.equils = exports.toBe = exports.is =(data,value)=>{
+exports.equils = exports.toBe = exports.is =(data,value,compareFn)=>{
       if(data ==null || data == undefined){
         return null
     }
     if(value){
+        if(compareFn)
+            return compareFn(data,value)
         return data == value
     }
     return false
