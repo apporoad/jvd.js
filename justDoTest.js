@@ -5,8 +5,9 @@ it = (title , fn) =>{
   }
 expect = ()=>{
 return {
-    toBe : ()=>{}
-    }
+    toBe : ()=>{},
+    toBeTruthy :()=>{}  
+  }
 }
 
 require('./test')

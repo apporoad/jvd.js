@@ -89,27 +89,27 @@ JVD("?/abc/").test('helloabcaa')
 
 ## 说明
 
-| expression                                | innerName                | not                                       | remark           |
-| ----------------------------------------- | ------------------------ | ----------------------------------------- | ---------------- |
-| & <br />&&                                | .                        |                                           | 内置操作符， and |
-| \|<br />\|\|                              | or                       |                                           | 内置操作符       |
-| ！                                        | not                      |                                           | 内置操作符       |
-| ?''<br />?string                          | isString                 | !'' <br />!string                         |                  |
-| ?d<br />?number                           | isNumber                 | !d <br />!number                          |                  |
-| ?int                                      | isInteger                | !int                                      |                  |
-| ?function<br />?fn<br />?fun<br />?method | isFunction               | !function<br />!fn<br />!fun<br />!method |                  |
-| ?sync                                     | isSyncFunction           | !sync                                     |                  |
-| ?async                                    | isAsyncFunction          | !async                                    |                  |
-| ?json or  ?j  or  ?{}  or ?object         | isJSON                   | !json or !j  or  !{}  or !object          |                  |
-| ?[]  or ?array                            | isArray                  | ![]  or !array                            |                  |
-| ?// or ?regexp                            | isRegExp                 | !// or !regexp                            |                  |
-| !!                                        | required<br />anything   |                                           |                  |
-| ?/ab/                                     | pattern<br />match       | !/ab/                                     |                  |
-| ?>12<br />>12                             | gt<br />greaterThan      | !>12                                      |                  |
-| ?<12<br /><12                             | lt<br />litterThan       | !<12                                      |                  |
-| ?(1,200.2)                                | between<br />range       | !(1,200.2)                                |                  |
-| ?[1,'a','ccc']                            | oneOf<br />in            | ![1,'a','ccc']                            |                  |
-| ?=1<br />?='b'<br />='dd'                 | equils<br />toBe<br />is | !=2                                       |                  |
+| expression                                | innerName                | not                                       | remark                                                       |
+| ----------------------------------------- | ------------------------ | ----------------------------------------- | ------------------------------------------------------------ |
+| & <br />&&                                | .                        |                                           | 内置操作符， and                                             |
+| \|<br />\|\|                              | or                       |                                           | 内置操作符                                                   |
+| ！                                        | not                      |                                           | 内置操作符                                                   |
+| ?''<br />?string                          | isString                 | !'' <br />!string                         |                                                              |
+| ?d<br />?number                           | isNumber                 | !d <br />!number                          |                                                              |
+| ?int                                      | isInteger                | !int                                      |                                                              |
+| ?function<br />?fn<br />?fun<br />?method | isFunction               | !function<br />!fn<br />!fun<br />!method |                                                              |
+| ?sync                                     | isSyncFunction           | !sync                                     |                                                              |
+| ?async                                    | isAsyncFunction          | !async                                    |                                                              |
+| ?json or  ?j  or  ?{}  or ?object         | isJSON                   | !json or !j  or  !{}  or !object          |                                                              |
+| ?[]  or ?array                            | isArray                  | ![]  or !array                            |                                                              |
+| ?// or ?regexp                            | isRegExp                 | !// or !regexp                            |                                                              |
+| !!                                        | required<br />anything   |                                           |                                                              |
+| ?/ab/                                     | pattern<br />match       | !/ab/                                     |                                                              |
+| ?>12<br />>12                             | gt<br />greaterThan      | !>12<br /><=12                            | 当待验证数据是字符串时，比较字符串长度<br />当验证数据为数组时，比较数组长度 |
+| ?<12<br /><12                             | lt<br />litterThan       | !<12<br />>=12                            | 同上                                                         |
+| ?(1,200.2)                                | between<br />range       | !(1,200.2)                                |                                                              |
+| ?[1,'a','ccc']                            | oneOf<br />in            | ![1,'a','ccc']                            |                                                              |
+| ?=1<br />?='b'<br />='dd'                 | equils<br />toBe<br />is | !=2                                       |                                                              |
 
 ## 如何扩展
 ```js

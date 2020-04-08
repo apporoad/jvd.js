@@ -79,4 +79,10 @@ it('real expression', () => {
     expect(JVD("?//").test(/ab/g)).toBe(true)
     // expect(JVD().match(/abc/g).test('helloabcaa')).toBe(true)
     expect(JVD("?/abc/").test('helloabcaa')).toBe(true)
+
+    expect(JVD('>3').test('abcd')).toBeTruthy()
+    expect(JVD('>2').test('ab')).toBe(false)
+    expect(JVD('?(2,2)').test([1,2])).toBeTruthy()
+    expect(JVD('<2').test('ab')).toBe(false)
+    expect(JVD('<=2').test('ab')).toBe(true)
 })

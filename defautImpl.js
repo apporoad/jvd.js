@@ -1,4 +1,5 @@
 const utils = require('lisa.utils')
+const uType = utils.Type
 
 function isNumber(val){
     var regPos = /^\d+(\.\d+)?$/; //非负浮点数
@@ -85,6 +86,15 @@ exports.pattern = exports.match  = (data, regExp)=>{
     throw Error('not right regExp' + regExp)
 }
 
+var innerGt= (one,value)=>{
+    if(uType.isNumber(value)){
+        if(uType.isArray(one) || uType.isString(one)){
+            return one.length > value
+        }
+    }
+    return one > value
+}
+
 exports.gt = exports.greaterThan = (data, value,comparedFn)=>{
      if(data ==null || data == undefined){
         return null
@@ -93,7 +103,7 @@ exports.gt = exports.greaterThan = (data, value,comparedFn)=>{
         if(comparedFn){
             return comparedFn(data,value)
         }
-        return data > value
+        return innerGt(data,value) 
     }
     return false
 }
@@ -105,7 +115,7 @@ exports.lt = exports.litterThan =(data,value,comparedFn)=>{
         if(comparedFn){
             return !comparedFn(data,value)
         }
-        return data < value
+        return innerGt(value,data)
     }
     return false
 }
@@ -118,7 +128,7 @@ exports.between = exports.range = (data,low,high,comparedFn)=>{
         if(comparedFn){
             return comparedFn(data,low) && comparedFn(high,data)
         }
-        return data >= low && data <= high
+        return  !innerGt(low,data)  &&  !innerGt(data,high)
     }
     return false
 }
