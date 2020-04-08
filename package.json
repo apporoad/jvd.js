@@ -1,6 +1,6 @@
 {
   "name": "jvd.js",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "js validator",
   "main": "index.js",
   "types": "index.d.ts",
