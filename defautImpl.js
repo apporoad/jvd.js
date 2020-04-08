@@ -157,3 +157,13 @@ exports.equils = exports.toBe = exports.is =(data,value,compareFn)=>{
     }
     return false
 }
+
+exports.$ =  (data,value) =>{
+    if(data == null || data ==undefined){
+        return null
+    }
+    if(value ==null || value==undefined){
+        return true
+    }
+    return value ? true : false
+}

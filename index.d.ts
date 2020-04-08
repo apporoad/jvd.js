@@ -141,6 +141,11 @@ declare class JVD{
      */
     is(value, compareFn?:Function):JVD
 
+    /**
+     * 空实现，根据传值判断是否返回true，不传值返回true
+     * @param value 
+     */
+    $(value? : Boolean):JVD
 }
 
 declare function JVD(s:string): JVD
