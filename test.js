@@ -11,6 +11,18 @@ it('test reg', () => {
     })
     expect(typeof jvd.isTest).toBe('function')
     expect(jvd2.isTest).toBe(undefined)
+
+    var jvd3 = JVD()
+    jvd3.reg('hello', (data,options,yourParam) => {
+        expect(options.hi).toBe('good days')
+        expect(yourParam).toBe('here is your param')
+        if (data && data =='hello')
+            return true
+        return false
+    })
+
+    var options = { hi : 'good days'}
+    jvd3.hello('here is your param').test('hello',options)
 })
 
 

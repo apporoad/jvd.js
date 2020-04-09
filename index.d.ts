@@ -2,6 +2,58 @@
 /**类声明*/
 declare class JVD{
 
+    /**
+     * 注册新验证到JVD对象
+     * jvd.reg('hello', (data,options,yourParam) => { }
+     * jvd.hello('hi')
+     * @param itemName 方法名
+     * @param implement 实现方法，可以同步，可以异步
+     */
+    reg(itemName : string, implement : Function)
+    
+    /**
+     * 同reg
+     * @param itemName 
+     * @param implement 
+     */
+    add(itemName: string , implement :Function)
+
+    /**
+     * 执行验证方法
+     * @param data 需要验证的数据
+     * @param options 扩展使用的options
+     */
+    test(data:any,options:Object) :Boolean
+    
+    /**
+     * 同test
+     * @param data 
+     * @param options 
+     */
+    run(data:any,options:Object) :Boolean
+
+    /**
+     * 同test
+     * @param data 
+     * @param options 
+     */
+    go (data:any,options:Object) :Boolean
+
+    /**
+     * 是否是JVD，永远返回true
+     */
+    isJVD() : Boolean
+
+    /**
+     * 取反，对后一个的验证节点起效
+     * not().gt(1)  同 小于等于1
+     */
+    not(): JVD
+
+    /**
+     * 或操作
+     */
+    or() : JVD
 
     /**
      *   is  instance of  string

@@ -31,14 +31,14 @@ function JVD() {
     }
     this.add = this.reg
 
-    this.test = this.run = this.go = (data) => {
+    this.test = this.run = this.go = (data,options) => {
         var trueOrFalse = true
         for (var i = 0; i < _this._queue.length; i++) {
             var pre = i == 0 ? null : _this._queue[i - 1]
             var current = _this._queue[i]
             var next = i + 1 >= _this._queue.length ? null : _this._queue[i + 1]
             if (current.type == 'validator') {
-                var params = [data].concat(current.params)
+                var params = [data,options].concat(current.params)
                 var result = _this._implements[current.item].apply(_this, params)
                 if (result == null) {
                     continue

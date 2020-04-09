@@ -21,19 +21,19 @@ function isInteger(val){
     }
 }
 
-exports.isString = (data)=>{
+exports.isString = (data,options)=>{
     if(data == null || data == undefined)
         return null
     return utils.Type.isString(data)
 }
 
-exports.isNumber = (data)=>{
+exports.isNumber = (data,options)=>{
     if(data==null || data == undefined)
         return null
     return isNumber(data)
 }
 
-exports.isInteger =(data)=>{
+exports.isInteger =(data,options)=>{
     if(data == null || data== undefined)
         return null
     return isInteger(data)
@@ -76,7 +76,7 @@ exports.required = (data)=>{
 }
 exports.anything = exports.required
 
-exports.pattern = exports.match  = (data, regExp)=>{
+exports.pattern = exports.match  = (data,options, regExp)=>{
     if(data ==null || data == undefined){
         return null
     }
@@ -95,7 +95,7 @@ var innerGt= (one,value)=>{
     return one > value
 }
 
-exports.gt = exports.greaterThan = (data, value,comparedFn)=>{
+exports.gt = exports.greaterThan = (data ,options, value,comparedFn)=>{
      if(data ==null || data == undefined){
         return null
     }
@@ -107,7 +107,7 @@ exports.gt = exports.greaterThan = (data, value,comparedFn)=>{
     }
     return false
 }
-exports.lt = exports.litterThan =(data,value,comparedFn)=>{
+exports.lt = exports.litterThan =(data,options,value,comparedFn)=>{
      if(data ==null || data == undefined){
         return null
     }
@@ -120,7 +120,7 @@ exports.lt = exports.litterThan =(data,value,comparedFn)=>{
     return false
 }
 
-exports.between = exports.range = (data,low,high,comparedFn)=>{
+exports.between = exports.range = (data,options,low,high,comparedFn)=>{
      if(data ==null || data == undefined){
         return null
     }
@@ -133,7 +133,7 @@ exports.between = exports.range = (data,low,high,comparedFn)=>{
     return false
 }
 
-exports.oneOf = exports.in = (data, array,comparedFn)=>{
+exports.oneOf = exports.in = (data , options, array,comparedFn)=>{
       if(data ==null || data == undefined){
         return null
     }
@@ -146,7 +146,7 @@ exports.oneOf = exports.in = (data, array,comparedFn)=>{
     return false
 }
 
-exports.equils = exports.toBe = exports.is =(data,value,compareFn)=>{
+exports.equils = exports.toBe = exports.is =(data,options,value,compareFn)=>{
       if(data ==null || data == undefined){
         return null
     }
@@ -158,7 +158,7 @@ exports.equils = exports.toBe = exports.is =(data,value,compareFn)=>{
     return false
 }
 
-exports.$ =  (data,value) =>{
+exports.$ =  (data , options,value) =>{
     if(data == null || data ==undefined){
         return null
     }

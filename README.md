@@ -116,13 +116,16 @@ JVD("?/abc/").test('helloabcaa')
 var JVD = require('jvd.js')
 
 var jvd = JVD()
-
-jvd.reg('hello', data => {
+//这里注意 参数data和options是必须的 
+jvd.reg('hello', (data,options,yourParam) => {
+    console.log(options.hi)
+    console.log(yourParam)
     if (data && data =='hello')
         return true
     return false
 })
 
-jvd.hello().test('hello')
+var options = { hi : 'good days'}
+jvd.hello('here is your param').test('hello',options)
 
 ```
