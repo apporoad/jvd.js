@@ -84,7 +84,8 @@ function JVD() {
         return trueOrFalse
     }
 
-
+    this.isJVD = ()=>{return true}
+    
     this.not = () => {
         _this._queue.push({
             item: 'not',
