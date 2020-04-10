@@ -87,12 +87,18 @@ exports.pattern = exports.match  = (data,options, regExp)=>{
 }
 
 var innerGt= (one,value)=>{
-    if(uType.isNumber(value)){
-        if(uType.isArray(one) || uType.isString(one)){
-            return one.length > value
-        }
+    var v1 = one
+    var v2 = value
+    if(uType.isString(v1) && uType.isString(v2)){
+        return v1 > v2
     }
-    return one > value
+    if(uType.isArray(v1) || uType.isString(v1)){
+        v1 = v1.length
+    }
+    if(uType.isArray(v2) || uType.isString(v2)){
+        v2 = v2.length
+    }
+    return v1 > v2
 }
 
 exports.gt = exports.greaterThan = (data ,options, value,comparedFn)=>{
