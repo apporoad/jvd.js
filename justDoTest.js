@@ -1,7 +1,7 @@
 
 it = (title , fn) =>{
-    if(fn)
-      fn()
+    // if(fn)
+    //   fn()
   }
 expect = ()=>{
 return {
@@ -10,4 +10,8 @@ return {
   }
 }
 
+global.debug = (title,fn)=>{
+  if(fn)
+    fn()
+}
 require('./test')

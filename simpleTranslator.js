@@ -1,4 +1,5 @@
 const utils = require('lisa.utils')
+const uType = utils.Type
 // and => &   &&
 // or => |   ||
 // not  => !
@@ -43,6 +44,14 @@ var tran = (jvd,expression) =>{
     || utils.startWith(expression,'=')
     ){
         expression = '?' + expression
+    }
+    //处理 ?<=  ?>=
+    if(utils.startWith(expression,'?>=')){
+        jvd.not()
+        expression = expression.replace('?>=','?<')
+    }else if(utils.startWith(expression,'?<=')){
+        jvd.not()
+        expression = expression.replace('?<=','?>')
     }
     switch(expression.toLowerCase()){
         case '?\'\'':
@@ -119,7 +128,7 @@ var tran = (jvd,expression) =>{
                     jvd.oneOf(value.value)
                 }else
                     return false
-            }else if(utils.startWith('?=')){
+            }else if(utils.startWith(expression,'?=')){
                 var value = tryParse(expression.substring(2))
                 if(value.success){
                     jvd.is(value.value)

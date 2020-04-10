@@ -1,5 +1,6 @@
 var JVD = require('./index')
 
+var it2 = global.debug || it
 it('test reg', () => {
 
     var jvd = JVD()
@@ -96,5 +97,11 @@ it('real expression',async () => {
     expect(await JVD('>2').test('ab')).toBe(false)
     expect(await JVD('?(2,2)').test([1,2])).toBeTruthy()
     expect(await JVD('<2').test('ab')).toBe(false)
-    expect(await JVD('<=2').test('ab')).toBe(true)
+    expect(await JVD('<=2').test('abc')).toBe(false)
+
+})
+
+it2('test special' , async ()=>{
+    expect(await JVD('=1').test(2)).toBe(false)
+    expect(await JVD('=2').test(2)).toBeTruthy()
 })
