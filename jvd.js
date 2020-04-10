@@ -1,6 +1,6 @@
 const utils = require('lisa.utils')
 function JVD() {
-    _this = this
+    var _this = this
     this._implements = {}
     this._queue = []
     this.reg = (itemName, implement) => {

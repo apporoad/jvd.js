@@ -104,4 +104,6 @@ it('real expression',async () => {
 it2('test special' , async ()=>{
     expect(await JVD('=1').test(2)).toBe(false)
     expect(await JVD('=2').test(2)).toBeTruthy()
+
+	expect(await JVD('>3').test('good day')).toBeTruthy()
 })
