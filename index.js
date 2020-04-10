@@ -8,6 +8,6 @@ module.exports = (expression) => {
     for (key in di) {
         j.reg(key, di[key])
     }
-    traslator.translate(j,expression) 
+    j.transInfo = traslator.translate(j,expression) 
     return j
 }

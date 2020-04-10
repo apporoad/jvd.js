@@ -1,7 +1,23 @@
 
+declare class TransInfo{
+  /**
+   * 转换成功数量
+   */
+  succuss: Number
+
+  /**
+   * 转换失败数量
+   */
+  fail : Number
+}
 /**类声明*/
 declare class JVD{
 
+    /**
+     * 字符串表达式转换结果，用于判断字符串是否可以转换为jvd
+     */
+    transInfo : TransInfo
+    
     /**
      * 注册新验证到JVD对象
      * jvd.reg('hello', (data,options,yourParam) => { }

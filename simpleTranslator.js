@@ -143,8 +143,12 @@ var tran = (jvd,expression) =>{
     return true
 }
 
+
+
 exports.translate =(jvd,expression) =>{
     if(!expression) return
+    var successCount = 0
+    var failCount = 0
     var actions = utils.ArrayRemove(expression.replace(/&&/g,'&').split('&'),'')
     if(actions && actions.length>0){
         for(var i =0 ;i<actions.length ;i ++){
@@ -154,7 +158,10 @@ exports.translate =(jvd,expression) =>{
                 for(var j =0 ;j<subActions.length;j++){
                     var sa = subActions[j]
                     if(!tran(jvd,sa)){
-                        console.log('jvd:simpleTranslator: tran error:' + expression + ' : '+sa)
+                        failCount++
+                        //console.log('jvd:simpleTranslator: tran error:' + expression + ' : '+sa)
+                    }else{
+                        successCount++
                     }
                     if(j<subActions.length-1){
                         jvd.or()
@@ -162,5 +169,9 @@ exports.translate =(jvd,expression) =>{
                 }
             }
         }
+    }
+    return {
+        success : successCount,
+        fail : failCount
     }
 }
