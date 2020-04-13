@@ -100,6 +100,17 @@ var innerGt= (one,value)=>{
     }
     return v1 > v2
 }
+var innerEquils= (one,value)=>{
+    var v1 = one
+    var v2 = value
+    if((uType.isArray(v1) || uType.isString(v1)) && uType.isNumber(v2)){
+        return v1.length == v2
+    }
+    if((uType.isArray(v2) || uType.isArray(v2)) && uType.isNumber(v1)){
+        return v2.length == v1
+    }
+    return v1 == v2
+}
 
 exports.gt = exports.greaterThan = (data ,options, value,comparedFn)=>{
      if(data ==null || data == undefined){
@@ -159,7 +170,7 @@ exports.equils = exports.toBe = exports.is =(data,options,value,compareFn)=>{
     if(value){
         if(compareFn)
             return compareFn(data,value)
-        return data == value
+        return innerEquils(data,value)
     }
     return false
 }
