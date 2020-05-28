@@ -121,4 +121,6 @@ it2('test transInfo' ,async ()=>{
     var jvd = JVD('=1&&!!&&xxx&&abc')
     expect(jvd.transInfo.success).toBe(2)
     expect(jvd.transInfo.fail).toBe(2)
+
+    expect( await JVD('?>0').test(1)).toBe(true)
 })

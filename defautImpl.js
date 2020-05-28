@@ -116,7 +116,7 @@ exports.gt = exports.greaterThan = (data ,options, value,comparedFn)=>{
      if(data ==null || data == undefined){
         return null
     }
-    if(value){
+    if(value!=null && value != undefined){
         if(comparedFn){
             return comparedFn(data,value)
         }
@@ -128,7 +128,7 @@ exports.lt = exports.litterThan =(data,options,value,comparedFn)=>{
      if(data ==null || data == undefined){
         return null
     }
-    if(value){
+    if(value!=null && value != undefined){
         if(comparedFn){
             return !comparedFn(data,value)
         }
@@ -141,7 +141,7 @@ exports.between = exports.range = (data,options,low,high,comparedFn)=>{
      if(data ==null || data == undefined){
         return null
     }
-    if(low && high){
+    if(low!=null && low!=undefined && high !=null && high!=undefined){
         if(comparedFn){
             return comparedFn(data,low) && comparedFn(high,data)
         }
@@ -167,7 +167,7 @@ exports.equils = exports.toBe = exports.is =(data,options,value,compareFn)=>{
       if(data ==null || data == undefined){
         return null
     }
-    if(value){
+    if(value!=null && value!=undefined){
         if(compareFn)
             return compareFn(data,value)
         return innerEquils(data,value)
